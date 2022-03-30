@@ -1,0 +1,14 @@
+{% extends 'event-enrollment-confirmation.html.twig' %}
+{% block footer %}
+  {{ who_going_link }}
+  {% if add_to_cal %}
+    <p>{{ 'Add to calendar'|t }}</p>
+    <ul>
+      {% for item in calendar_items %}
+        <li>
+          {{ item }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
