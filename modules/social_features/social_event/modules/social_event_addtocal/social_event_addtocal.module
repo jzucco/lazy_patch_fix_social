@@ -58,17 +58,31 @@ function social_event_addtocal_preprocess_event_enrollment_confirmation_add_to_c
     $variables['add_to_cal'] = TRUE;
     // Get calendar links.
     foreach (_social_event_addtocal_get_links($node) as $link) {
-      $options = $link['url']->getOptions();
-      $options['attributes']['class'] = [
-        'calendar-link',
-        'calendar-' . Html::getId($link['title']),
+      $items[] = [
+        '#type' => 'html_tag',
+        '#tag' => 'span',
+        '#value' => Link::fromTextAndUrl(
+          t('@calendar calendar', ['@calendar' => $link['title']]),
+          $link['url']
+        )->toString(),
+        '#attributes' => [
+          'class' => [
+            'calendar-link',
+            'calendar-' . Html::getId($link['title']),
+          ],
+        ],
       ];
-      $link['url']->setOptions($options);
-      $variables['calendar_items'][] = Link::fromTextAndUrl(
-        t('@calendar calendar', ['@calendar' => $link['title']]),
-        $link['url']
-      );
     }
+    $variables['calendar_items'] = [
+      '#theme' => 'item_list',
+      '#list_type' => 'ul',
+      '#items' => $items,
+      '#attributes' => [
+        'class' => [
+          'addtocal-list'
+        ],
+      ],
+    ];
   }
 }
 

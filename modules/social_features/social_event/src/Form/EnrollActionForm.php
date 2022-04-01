@@ -459,6 +459,7 @@ class EnrollActionForm extends FormBase {
         $enroll_confirmation,
         [
           'width' => '479px',
+          'dialogClass' => 'social-dialog--event-addtocal',
         ]
       ));
     }

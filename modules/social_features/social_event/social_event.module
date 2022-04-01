@@ -53,6 +53,8 @@ function social_event_preprocess_event_enrollment_confirmation(array &$variables
       'target' => '_blank',
       'class' => [
         'btn',
+        'btn-sm',
+        'btn-primary',
       ],
     ],
   ];
