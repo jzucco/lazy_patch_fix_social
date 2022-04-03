@@ -36,23 +36,35 @@ function social_event_addtocal_node_view(array &$build, NodeInterface $node, Ent
 
   // Get 'Add to calendar' configuration.
   $addtocal_config = Drupal::config('social_event_addtocal.settings');
+  if (!$addtocal_config->get('enable_add_to_calendar')) {
+    return;
+  }
 
-  // Set render array if the 'Add to calendar' feature enabled.
-  if ($addtocal_config->get('enable_add_to_calendar')) {
-    // Get calendar links.
-    $links = _social_event_addtocal_get_links($node);
+  $links = _social_event_addtocal_get_links($node);
 
-    // Update the 'Add to calendar' field rendering.
+  // Add special rules for "email_card" display mode as the field should
+  // be rendered for emails letters which has a lot of restrictions.
+  if ($view_mode === 'email_card') {
+    $build['field_event_addtocal'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'div',
+      '#attributes' => ['class' => ['list']],
+      [
+        '#type' => 'html_tag',
+        '#tag' => 'span',
+        '#value' => t('Add to Calendar'),
+      ],
+      [
+        '#theme' => 'links',
+        '#links' => $links,
+      ],
+    ];
+  }
+  else {
     $build['field_event_addtocal'] = [
       '#type' => 'dropbutton',
-      '#attributes' => [
-        'class' => ['add-to-calendar'],
-      ],
       '#links' => $links,
     ];
-
-    // Make sure we clear the cache if the settings is submitted.
-    $build['#cache']['tags'][] = 'config:social_event_addtocal.settings';
 
     // Split links if there is more than one.
     if (count($links) > 1) {
@@ -62,6 +74,10 @@ function social_event_addtocal_node_view(array &$build, NodeInterface $node, Ent
       ];
     }
   }
+
+  $build['field_event_addtocal']['#attributes']['class'][] = 'add-to-calendar';
+  // Make sure we clear the cache if the settings is submitted.
+  $build['#cache']['tags'][] = 'config:social_event_addtocal.settings';
 }
 
 /**
