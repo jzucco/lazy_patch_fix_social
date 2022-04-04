@@ -57,6 +57,7 @@ function social_event_addtocal_preprocess_event_enrollment_confirmation_add_to_c
     $node = $variables['node'];
     $variables['add_to_cal'] = TRUE;
     // Get calendar links.
+    $items = [];
     foreach (_social_event_addtocal_get_links($node) as $link) {
       $items[] = [
         '#type' => 'html_tag',
@@ -79,7 +80,7 @@ function social_event_addtocal_preprocess_event_enrollment_confirmation_add_to_c
       '#items' => $items,
       '#attributes' => [
         'class' => [
-          'addtocal-list'
+          'addtocal-list',
         ],
       ],
     ];

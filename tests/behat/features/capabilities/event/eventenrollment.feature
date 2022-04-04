@@ -20,8 +20,7 @@ Feature: Enroll for an event
 
     When I press the "Enroll" button
     And I wait for AJAX to finish
-    Then I should see the text "You're going!" in the "Modal"
-    And I should see the text "Meetup: My Behat Event created" in the "Modal"
+    Then I should see the text "Meetup: My Behat Event created" in the "Modal"
     And I should see the link "See who else is going" in the "Modal"
     And I press the "Close" button
     And I should see the button "Enrolled"
@@ -66,8 +65,7 @@ Feature: Enroll for an event
 
     When I press the "Enroll" button
     And I wait for AJAX to finish
-    Then I should see the text "You're going!" in the "Modal"
-    And I should see the text "Meetup: Enrollment redirect test event" in the "Modal"
+    Then I should see the text "Meetup: Enrollment redirect test event" in the "Modal"
     And I should see the link "See who else is going" in the "Modal"
     And I press the "Close" button
     And I should see the button "Enrolled"
@@ -92,8 +90,7 @@ Feature: Enroll for an event
 
     When I press the "Enroll" button
     And I wait for AJAX to finish
-    Then I should see the text "You're going!" in the "Modal"
-    And I should see the text "Meetup: My Behat Event created" in the "Modal"
+    Then I should see the text "Meetup: My Behat Event created" in the "Modal"
     And I should see the link "See who else is going" in the "Modal"
     And I press the "Close" button
     And I should see the button "Enrolled"

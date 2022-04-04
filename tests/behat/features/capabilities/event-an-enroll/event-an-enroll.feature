@@ -27,8 +27,7 @@ Feature: Enroll for an event without an account
       | Email address | john@doe.com |
     And I press "Enroll in event" in the "Modal"
     And I wait for AJAX to finish
-    Then I should see the text "You're going!" in the "Modal"
-    And I should see the text "Meetup: AN Event 1" in the "Modal"
+    Then I should see the text "Meetup: AN Event 1" in the "Modal"
     And I press the "Close" button
     Then I should see "AN Event 1" in the "Hero block"
     And I should not see the link "Enroll" in the "Hero block"
@@ -55,8 +54,7 @@ Feature: Enroll for an event without an account
       | Email address | john@doe.com |
     And I press "Enroll in event" in the "Modal"
     And I wait for AJAX to finish
-    Then I should see the text "You're going!" in the "Modal"
-    And I should see the text "Meetup: AN Event 1" in the "Modal"
+    Then I should see the text "Meetup: AN Event 1" in the "Modal"
     And I press the "Close" button
     Given I am an anonymous user
     And I open the "event" node with title "AN Event 1"

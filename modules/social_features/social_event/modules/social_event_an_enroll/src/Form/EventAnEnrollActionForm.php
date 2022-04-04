@@ -175,7 +175,7 @@ class EventAnEnrollActionForm extends EnrollActionForm {
    */
   public function cancelEnrollmentAjax(array &$form, FormStateInterface $form_state): AjaxResponse {
     $response = new AjaxResponse();
-    $token = '';
+    $token = NULL;
     $nid = $form_state->getValue('event');
     $uid = $this->currentUser()->id();
     $store = $this->tempStoreFactory->get('social_event_an_enroll');

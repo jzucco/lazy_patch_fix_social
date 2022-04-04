@@ -133,24 +133,23 @@ class EnrollActionForm extends FormBase {
       !empty($groups) &&
       $node->field_event_enroll_outside_group->value !== '1'
       && empty($enrollments)
-      && social_event_manager_or_organizer() === FALSE
+      && !social_event_manager_or_organizer()
     ) {
 
       $group_type_ids = $this->configFactory->get('social_event.settings')
         ->get('enroll');
 
+      /** @var \Drupal\group\Entity\GroupInterface $group */
       foreach ($groups as $group) {
-        $group_type_id = $group->bundle();
-
         // The join group permission has never really been used since
         // this commit. This now means that events in a closed group cannot
         // be joined by outsiders, which makes sense, since they also
         // couldn't see these events in the first place.
-        if (in_array($group_type_id, $group_type_ids) && $group->hasPermission('join group', $current_user)) {
+        if (in_array($group->bundle(), $group_type_ids) && $group->hasPermission('join group', $current_user)) {
           break;
         }
 
-        if ($group->hasPermission('enroll to events in groups', $current_user) == FALSE) {
+        if (!$group->hasPermission('enroll to events in groups', $current_user)) {
           return [];
         }
       }
@@ -407,10 +406,11 @@ class EnrollActionForm extends FormBase {
       if ($to_enroll_status === '0' && $current_enrollment_status === '1') {
         // The user is enrolled by invited or request, but either the user or
         // event manager is declining or invalidating the enrollment.
-        if ($enrollment->field_request_or_invite_status
-          && (int) $enrollment->field_request_or_invite_status->value === EventEnrollmentInterface::INVITE_ACCEPTED_AND_JOINED) {
+        $request_or_invite = $enrollment->get('field_request_or_invite_status');
+        if ($request_or_invite->isEmpty()
+          && (int) $request_or_invite->getString() === EventEnrollmentInterface::INVITE_ACCEPTED_AND_JOINED) {
           // Mark this user's enrollment as declined.
-          $enrollment->field_request_or_invite_status->value = EventEnrollmentInterface::REQUEST_OR_INVITE_DECLINED;
+          $enrollment->set('field_request_or_invite_status', EventEnrollmentInterface::REQUEST_OR_INVITE_DECLINED);
           // If the user is cancelling, un-enroll.
           $current_enrollment_status = $enrollment->field_enrollment_status->value;
           if ($current_enrollment_status === '1') {

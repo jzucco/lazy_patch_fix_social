@@ -7780,11 +7780,6 @@ parameters:
 			path: modules/social_features/social_event/modules/social_event_an_enroll/src/Form/EventAnEnrollForm.php
 
 		-
-			message: "#^Call to an undefined method Drupal\\\\Core\\\\Entity\\\\EntityInterface\\:\\:get\\(\\)\\.$#"
-			count: 1
-			path: modules/social_features/social_event/modules/social_event_an_enroll/src/Form/EventAnEnrollForm.php
-
-		-
 			message: "#^Method Drupal\\\\social_event_an_enroll\\\\Form\\\\EventAnEnrollForm\\:\\:submitForm\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: modules/social_features/social_event/modules/social_event_an_enroll/src/Form/EventAnEnrollForm.php
