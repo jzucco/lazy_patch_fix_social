@@ -69,6 +69,11 @@ class EventAnEnrollForm extends EnrollActionForm {
       $node = $this->entityTypeManager->getStorage('node')->load($node);
     }
 
+    $form['error_wrapper'] = [
+      '#type' => 'container',
+      '#id' => 'enroll-an-error-wrapper',
+    ];
+
     // Set hidden values.
     $form['field_event'] = [
       '#type' => 'hidden',
@@ -146,6 +151,19 @@ class EventAnEnrollForm extends EnrollActionForm {
    */
   public function ajaxSubmitAnEnrollForm(array &$form, FormStateInterface $form_state): Response {
     $response = new AjaxResponse();
+    $response->addCommand(new ReplaceCommand('#enroll-an-error-wrapper', $form['error_wrapper']));
+    if ($form_state->hasAnyErrors()) {
+      foreach ($form_state->getErrors() as $error) {
+        $response->addCommand(new MessageCommand(
+          $error,
+          '#enroll-an-error-wrapper',
+          ['type' => 'error']
+        ));
+      }
+      $form_state->clearErrors();
+      $this->messenger()->deleteByType('error');
+      return $response;
+    }
     $token = NULL;
     $nid = $form_state->getValue('field_event');
     $uid = $this->currentUser()->id();
