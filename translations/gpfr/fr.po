@@ -10762,7 +10762,7 @@ msgid "Notification"
 msgstr ""
 
 #: modules/social_features/social_activity/social_activity.module:42;50;141;1
-msgid "Notification Centre"
+msgid "Notification Center"
 msgstr "Notifications"
 
 #: modules/social_features/social_activity/config/install/core.entity_view_mode.activity.notification_archive.yml:0
@@ -17013,7 +17013,7 @@ msgstr ""
 msgid ""
 "When this setting is enabled, users who have never logged in will not "
 "receive email notifications, they still receive notifications via the "
-"notification centre within the community."
+"notification center within the community."
 msgstr ""
 
 #: modules/social_features/social_user/src/Form/SocialUserSettingsForm.php:40
@@ -17223,7 +17223,7 @@ msgid ""
 "will receive a notification via email and notification center."
 msgstr ""
 "Vous pouvez laisser un message. Une fois votre requête acceptée, vous allez "
-"recevoir une notification via email et votre centre de notification."
+"recevoir une notification via email et votre center de notification."
 
 #: modules/social_features/social_event/src/Form/EnrollRequestModalForm.php:49
 #: modules/social_features/social_group/modules/social_group_request/src/Form/GroupRequestMembershipRequestForm.php:107

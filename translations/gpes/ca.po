@@ -10840,8 +10840,8 @@ msgid "Notification"
 msgstr "Notificació"
 
 #: modules/social_features/social_activity/social_activity.module:42;50;141;1
-msgid "Notification Centre"
-msgstr "Centre de notificació"
+msgid "Notification Center"
+msgstr "Center de notificació"
 
 #: modules/social_features/social_activity/config/install/core.entity_view_mode.activity.notification_archive.yml:0
 msgid "Notification archive"
@@ -17290,7 +17290,7 @@ msgstr ""
 msgid ""
 "When this setting is enabled, users who have never logged in will not "
 "receive email notifications, they still receive notifications via the "
-"notification centre within the community."
+"notification center within the community."
 msgstr ""
 
 #: modules/social_features/social_user/src/Form/SocialUserSettingsForm.php:40
