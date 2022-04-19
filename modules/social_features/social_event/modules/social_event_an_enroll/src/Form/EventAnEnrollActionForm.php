@@ -2,18 +2,74 @@
 
 namespace Drupal\social_event_an_enroll\Form;
 
-use Drupal\social_event\Form\EnrollActionForm;
+use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\Core\Entity\EntityStorageInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Form\FormBase;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
+use Drupal\social_event\SocialEventTrait;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class EventAnEnrollActionForm.
  *
  * @package Drupal\social_event_an_enroll\Form
  */
-class EventAnEnrollActionForm extends EnrollActionForm {
+class EventAnEnrollActionForm extends FormBase implements ContainerInjectionInterface {
+
+  use SocialEventTrait;
+
+  /**
+   * The node storage for event enrollments.
+   *
+   * @var \Drupal\Core\Entity\EntityStorageInterface
+   */
+  protected EntityStorageInterface $entityStorage;
+
+  /**
+   * The current user.
+   *
+   * @var \Drupal\Core\Session\AccountProxyInterface
+   */
+  protected AccountProxyInterface $currentUser;
+
+  /**
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected EntityTypeManagerInterface $entityTypeManager;
+
+  /**
+   * Constructs an EventAnEnrollActionForm.
+   *
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
+   * @param \Drupal\Core\Session\AccountProxyInterface $currentUser
+   *   The current user.
+   */
+  public function __construct(
+    EntityTypeManagerInterface $entity_type_manager,
+    AccountProxyInterface $currentUser
+  ) {
+    $this->entityStorage = $entity_type_manager->getStorage('event_enrollment');
+    $this->entityTypeManager = $entity_type_manager;
+    $this->currentUser = $currentUser;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container): self {
+    return new static(
+      $container->get('entity_type.manager'),
+      $container->get('current_user')
+    );
+  }
 
   /**
    * {@inheritdoc}
