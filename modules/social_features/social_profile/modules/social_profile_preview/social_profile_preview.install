@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Profile Preview module.
+ */
+
+/**
+ * Add followers and following fields.
+ */
+function social_profile_preview_update_11201(): string {
+  /** @var \Drupal\update_helper\UpdaterInterface $update_helper */
+  $update_helper = \Drupal::service('update_helper.updater');
+
+  // Execute configuration update definitions with logging of success.
+  $update_helper->executeUpdate('social_profile_preview', __FUNCTION__);
+
+  // Output logged messages to related channel of update execution.
+  return $update_helper->logger()->output();
+}
+
+/**
+ * Add summary field.
+ */
+function social_profile_preview_update_11202(): string {
+  /** @var \Drupal\update_helper\UpdaterInterface $update_helper */
+  $update_helper = \Drupal::service('update_helper.updater');
+
+  // Execute configuration update definitions with logging of success.
+  $update_helper->executeUpdate('social_profile_preview', __FUNCTION__);
+
+  // Output logged messages to related channel of update execution.
+  return $update_helper->logger()->output();
+}
