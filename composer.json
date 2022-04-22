@@ -133,7 +133,7 @@
             },
             "drupal/socialblue": {
                 "LU should be able to see the list of the users another user follow": "https://www.drupal.org/files/issues/2022-04-08/socialblue-user-follow-3272002-9.patch",
-                "3270776: Redesign <add to Calendar> button on events": "https://www.drupal.org/files/issues/2022-04-21/3270776--socialblue-70.diff"
+                "3270776: Redesign <add to Calendar> button on events": "https://www.drupal.org/files/issues/2022-04-22/3270776--socialblue-78.patch"
 
             },
             "drupal/update_helper": {
