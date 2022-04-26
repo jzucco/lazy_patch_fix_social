@@ -136,7 +136,7 @@
                 "Redirection issue when interface language is different from content language": "https://www.drupal.org/files/issues/2020-06-01/redirect-interface_language_different_from_content_language_2991423-13.patch"
             },
             "drupal/socialbase": {
-                "3274735: When we use the emoji picker, we can see an icon arrow over the picker. Change z-index for the stream item": "./patches/issue-3274735-change-z-index-for-stream-item.patch"
+                "3274735: When we use the emoji picker, we can see an icon arrow over the picker. Change z-index for the stream item": "https://www.drupal.org/files/issues/2022-04-26/issue-3274735-change-z-index-for-stream-item.patch"
             }
         }
     },
