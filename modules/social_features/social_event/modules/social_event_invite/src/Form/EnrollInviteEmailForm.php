@@ -6,6 +6,7 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\File\FileUrlGenerator;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -75,6 +76,13 @@ class EnrollInviteEmailForm extends InviteEmailBaseForm {
   protected EventMaxEnrollService $eventMaxEnrollService;
 
   /**
+   * File URL Generator services.
+   *
+   * @var \Drupal\Core\File\FileUrlGenerator
+   */
+  protected FileUrlGenerator $fileUrlGenerator;
+
+  /**
    * {@inheritdoc}
    */
   public function getFormId() {
@@ -94,7 +102,8 @@ class EnrollInviteEmailForm extends InviteEmailBaseForm {
     Token $token,
     SocialEventEnrollServiceInterface $event_enroll_service,
     ModuleHandlerInterface $module_handler,
-    EventMaxEnrollService $eventMaxEnrollService
+    EventMaxEnrollService $eventMaxEnrollService,
+    FileUrlGenerator $file_url_generator
   ) {
     parent::__construct($route_match, $entity_type_manager, $logger_factory);
     $this->entityStorage = $entity_storage;
@@ -104,6 +113,7 @@ class EnrollInviteEmailForm extends InviteEmailBaseForm {
     $this->eventEnrollService = $event_enroll_service;
     $this->moduleHandler = $module_handler;
     $this->eventMaxEnrollService = $eventMaxEnrollService;
+    $this->fileUrlGenerator = $file_url_generator;
   }
 
   /**
@@ -120,7 +130,8 @@ class EnrollInviteEmailForm extends InviteEmailBaseForm {
       $container->get('token'),
       $container->get('social_event.enroll'),
       $container->get('module_handler'),
-      $container->get('social_event_max_enroll.service')
+      $container->get('social_event_max_enroll.service'),
+      $container->get('file_url_generator')
     );
   }
 
@@ -156,7 +167,7 @@ class EnrollInviteEmailForm extends InviteEmailBaseForm {
       $file = File::load(reset($email_logo));
 
       if ($file instanceof File) {
-        $logo = file_create_url($file->getFileUri());
+        $logo = $this->fileUrlGenerator->generateAbsoluteString($file->getFileUri());
       }
     }
 
