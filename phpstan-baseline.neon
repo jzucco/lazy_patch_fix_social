@@ -3221,11 +3221,6 @@ parameters:
 			path: modules/custom/social_file_private/social_file_private.install
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between string and null will always evaluate to false\\.$#"
-			count: 1
-			path: modules/custom/social_file_private/social_file_private.install
-
-		-
 			message: "#^Variable \\$field in PHPDoc tag @var does not match assigned variable \\$unprotected_fields\\.$#"
 			count: 1
 			path: modules/custom/social_file_private/social_file_private.install
@@ -4101,11 +4096,6 @@ parameters:
 			path: modules/custom/social_queue_storage/src/QueueStorageEntityHtmlRouteProvider.php
 
 		-
-			message: "#^Parameter \\#1 \\$text of static method Drupal\\\\Core\\\\Link\\:\\:createFromRoute\\(\\) expects array\\|Drupal\\\\Component\\\\Render\\\\MarkupInterface\\|string, string\\|null given\\.$#"
-			count: 1
-			path: modules/custom/social_queue_storage/src/QueueStorageEntityListBuilder.php
-
-		-
 			message: "#^Call to an undefined method object\\:\\:getType\\(\\)\\.$#"
 			count: 1
 			path: modules/custom/template_suggestions_extra/template_suggestions_extra.module
@@ -4522,11 +4512,6 @@ parameters:
 
 		-
 			message: "#^Cannot call method getFileUri\\(\\) on Drupal\\\\file\\\\Entity\\\\File\\|null\\.$#"
-			count: 1
-			path: modules/social_features/social_activity/src/EmailTokenServices.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function strtoupper expects string, string\\|null given\\.$#"
 			count: 1
 			path: modules/social_features/social_activity/src/EmailTokenServices.php
 
@@ -5431,11 +5416,6 @@ parameters:
 			path: modules/social_features/social_comment/social_comment.tokens.inc
 
 		-
-			message: "#^Parameter \\#1 \\$str of function strtolower expects string, string\\|null given\\.$#"
-			count: 1
-			path: modules/social_features/social_comment/social_comment.tokens.inc
-
-		-
 			message: "#^Parameter \\#2 \\$value of static method Drupal\\\\views\\\\Plugin\\\\views\\\\field\\\\FieldPluginBase\\:\\:trimText\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: modules/social_features/social_comment/social_comment.tokens.inc
@@ -6211,11 +6191,6 @@ parameters:
 			path: modules/social_features/social_core/social_core.install
 
 		-
-			message: "#^Else branch is unreachable because previous condition is always true\\.$#"
-			count: 1
-			path: modules/social_features/social_core/social_core.install
-
-		-
 			message: "#^Function _social_core_create_an_homepage_block\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: modules/social_features/social_core/social_core.install
@@ -6913,11 +6888,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$permission of method Drupal\\\\Core\\\\Session\\\\AccountInterface\\:\\:hasPermission\\(\\) expects string, bool\\|string given\\.$#"
 			count: 2
-			path: modules/social_features/social_core/social_core.module
-
-		-
-			message: "#^Parameter \\#1 \\$str of function strip_tags expects string, string\\|null given\\.$#"
-			count: 1
 			path: modules/social_features/social_core/social_core.module
 
 		-
@@ -13320,11 +13290,6 @@ parameters:
 			path: modules/social_features/social_group/src/Controller/SocialGroupController.php
 
 		-
-			message: "#^Parameter \\#1 \\$key of function array_key_exists expects int\\|string, string\\|null given\\.$#"
-			count: 1
-			path: modules/social_features/social_group/src/Controller/SocialGroupController.php
-
-		-
 			message: "#^\\\\Drupal calls should be avoided in classes, use dependency injection instead$#"
 			count: 5
 			path: modules/social_features/social_group/src/Controller/SocialGroupController.php
@@ -14220,16 +14185,6 @@ parameters:
 			path: modules/social_features/social_like/social_like.tokens.inc
 
 		-
-			message: "#^Parameter \\#1 \\$str of function mb_strtolower expects string, string\\|null given\\.$#"
-			count: 1
-			path: modules/social_features/social_like/social_like.tokens.inc
-
-		-
-			message: "#^Parameter \\#1 \\$str of function strtolower expects string, string\\|null given\\.$#"
-			count: 1
-			path: modules/social_features/social_like/social_like.tokens.inc
-
-		-
 			message: "#^Variable \\$content_type_label might not be defined\\.$#"
 			count: 3
 			path: modules/social_features/social_like/social_like.tokens.inc
@@ -14471,11 +14426,6 @@ parameters:
 
 		-
 			message: "#^Function social_mentions_tokens_alter\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: modules/social_features/social_mentions/social_mentions.tokens.inc
-
-		-
-			message: "#^Parameter \\#1 \\$str of function mb_strtolower expects string, string\\|null given\\.$#"
 			count: 1
 			path: modules/social_features/social_mentions/social_mentions.tokens.inc
 
@@ -19356,11 +19306,6 @@ parameters:
 
 		-
 			message: "#^Method Drupal\\\\social_user_export\\\\Plugin\\\\Action\\\\ExportUser\\:\\:executeMultiple\\(\\) should return array but return statement is missing\\.$#"
-			count: 1
-			path: modules/social_features/social_user_export/src/Plugin/Action/ExportUser.php
-
-		-
-			message: "#^Parameter \\#1 \\$data of function file_save_data expects string, string\\|false given\\.$#"
 			count: 1
 			path: modules/social_features/social_user_export/src/Plugin/Action/ExportUser.php
 
