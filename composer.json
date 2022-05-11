@@ -27,7 +27,6 @@
         }
     },
     "extra": {
-        "enable-patching": true,
         "patches": {
             "instaclick/php-webdriver": {
                 "Curl_exec errors on behat (1.4.11)": "https://www.drupal.org/files/issues/2022-03-30/social-instaclick-webdriver-3272386-2.patch"
